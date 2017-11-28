@@ -22,7 +22,7 @@
 						<li><a data-scroll-nav="4" href="#benefits">Benefits</a></li>
 						<li><a data-scroll-nav="5" href="#team">Meet The Team</a></li>
 					</ul>
-					<a class="header-btn scroll-to btn small colorful hover-transparent-colorful" href="#">Join Us</a>
+					<a class="header-btn btn small colorful hover-transparent-colorful" target="_blank" href="{{route('show_join_us')}}">Join Us</a>
 					<div class="mobile-menu-btn hamburger hamburger--slider">
 						<span class="hamburger-box">
 							<span class="hamburger-inner"></span>

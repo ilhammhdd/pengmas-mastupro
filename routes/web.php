@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+/*Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');*/
+
+Route::get('/', 'LandingController@index')->name('index');
+
+Route::get('/show-join-us','LandingController@showJoinUs')->name('show_join_us');
+Route::get('/show-sign-in','LandingController@showSignIn')->name('show_sign_in');
