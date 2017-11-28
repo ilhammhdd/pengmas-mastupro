@@ -1,0 +1,28 @@
+/*Auth Page*/
+body {
+	background-image: url("/images/test.png");
+	background-position: center;
+	background-repeat: no-repeat;
+\	background-size: cover;
+}
+
+.logo {
+	padding-top: 10px;
+}
+
+.form-horizontal {
+	width: 400px;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	padding: 50px 20px;
+	background: rgba(255,255,255,0.8);
+}
+
+.btn-full-width {
+	width: 100%;
+}
+/*End Auth Page*/
