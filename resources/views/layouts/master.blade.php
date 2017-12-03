@@ -48,7 +48,6 @@
 <!-- Document Full Container
 	============================================= -->
 <div id="full-container">
-
     @yield('header')
 
     @yield('banner')

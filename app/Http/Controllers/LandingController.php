@@ -10,11 +10,11 @@ class LandingController extends Controller
         return view('landing');
     }
 
-    public function showJoinUs(){
+    public function showJoinUsForm(){
         return view('auth.register');
     }
 
-    public function showSignIn(){
+    public function showSignInForm(){
         return view('auth.login');
     }
 }

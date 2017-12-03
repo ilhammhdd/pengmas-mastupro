@@ -17,6 +17,8 @@ class PatientsTableSeeder extends Seeder
         $martin->alamat = 'Jln.Jalan Keliling Kota no.002 Bandung Jawa Barat';
         $martin->email = 'martin@gmail.com';
         $martin->no_telp = '082177671168';
+        $martin->jenis_kelamin = 'laki-laki';
+        $martin->golongan_darah = 'A';
         $martin->save();
     }
 }

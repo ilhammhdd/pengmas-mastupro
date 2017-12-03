@@ -19,6 +19,8 @@ class CreatePatientsTable extends Migration
             $table->string('alamat');
             $table->string('email');
             $table->string('no_telp');
+            $table->string('jenis_kelamin');
+            $table->string('golongan_darah');
             $table->timestamps();
         });
     }

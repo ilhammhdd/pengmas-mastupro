@@ -36,7 +36,7 @@
                     <h6>Call Us: +201093515252</h6>--}}
                 </div><!-- .form-group end -->
             </form><!-- #appointment-form end -->
-            <a class="btn small colorful hover-dark rounded" target="_blank" href="{{route('show_sign_in')}}">
+            <a class="btn small colorful hover-dark rounded" href="{{route('show_sign_in')}}">
                 Sign In
             </a>
         </div><!-- .box-appointment-form end -->

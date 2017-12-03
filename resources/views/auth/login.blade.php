@@ -16,20 +16,22 @@
     <div id="content-wrap">
         <div class="box-appointment-form">
             <h2>Sign In</h2>
-            <form id="appointment-form">
+            <form id="appointment-form" method="post" action="{{route('sign_in')}}">
+                {{csrf_field()}}
                 <div class="af-notifications">
                     <div class="af-notifications-cont"></div>
                 </div><!-- end Contact Form Submit Message -->
                 <div class="form-group">
-                    <input type="text" name="afName" id="afName" class="form-control" placeholder="Your Name">
+                    <input type="text" name="username-or-email" id="username-or-email" class="form-control"
+                           placeholder="Username or Email">
                 </div><!-- .form-group end -->
                 <div class="form-group">
-                    <input type="text" name="afEmail" id="afEmail" class="form-control" placeholder="Your Email">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                 </div><!-- .form-group end -->
-                <div class="form-group">
-                    <input type="text" name="afPhoneNum" id="afPhoneNum" class="form-control"
-                           placeholder="Phone Number">
-                </div><!-- .form-group end -->
+                {{--<div class="form-group">--}}
+                {{--<input type="text" name="afPhoneNum" id="afPhoneNum" class="form-control"--}}
+                {{--placeholder="Phone Number">--}}
+                {{--</div><!-- .form-group end -->--}}
                 <div class="form-group">
                     <input type="submit" class="form-control" value="Sign In">
                     {{--<img src="images/general-elements/cta-arrow-right.png" alt="">
