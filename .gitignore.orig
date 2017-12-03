@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+=======
+# Add any directories, files, or patterns you don't want to be tracked by version control
+>>>>>>> 92bb9fd76fb857f3fe6d363fff7542ebb8a70a5a
