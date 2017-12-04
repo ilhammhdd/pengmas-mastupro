@@ -25,8 +25,8 @@ Route::group(['middleware' => ['web', 'role:admin']], function () {
 
 Route::group(['middleware' => ['web', 'role:healthcare']], function () {
     Route::get('/healthcare-home', 'HealthCare\HomeController@index')->name('healthcare.home');
-    Route::get('/register-new-patient','HealthCare\HomeController@showRegisterNewPatient')->name('healthcare.show_register_new_patient');
-    Route::post('/register-new-patient','HealthCare\HomeController@registerNewPatient')->name('healthcare.register_new_patient');
+    Route::get('/register-new-patient','HealthCare\RegisterNewPatientController@showRegisterNewPatient')->name('healthcare.show_register_new_patient');
+    Route::post('/register-new-patient','HealthCare\RegisterNewPatientController@registerNewPatient')->name('healthcare.register_new_patient');
 });
 
 Route::group(['middleware' => ['web', 'role:patient']], function () {

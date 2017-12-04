@@ -21,6 +21,8 @@ class CreatePatientsTable extends Migration
             $table->string('no_telp');
             $table->string('jenis_kelamin');
             $table->string('golongan_darah');
+            $table->string('tanggal_lahir');
+            $table->string('tempat_lahir');
             $table->timestamps();
         });
     }

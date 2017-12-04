@@ -19,6 +19,8 @@ class PatientsTableSeeder extends Seeder
         $martin->no_telp = '082177671168';
         $martin->jenis_kelamin = 'laki-laki';
         $martin->golongan_darah = 'A';
+        $martin->tanggal_lahir = '08-11-1997';
+        $martin->tempat_lahir = 'Medan';
         $martin->save();
     }
 }

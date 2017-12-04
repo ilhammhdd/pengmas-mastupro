@@ -24,6 +24,7 @@
     <link href="{{asset('elite_admin_hospital/css/style.css')}}" rel="stylesheet">
     <!-- color CSS -->
     <link href="{{asset('elite_admin_hospital/css/colors/megna.css')}}" id="theme" rel="stylesheet">
+    @yield('other-css-import')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -306,6 +307,7 @@
 <script src="{{asset('elite_admin_hospital/js/dashboard1.js')}}"></script>
 <!--Style Switcher -->
 <script src="{{asset('elite_admin_hospital/plugins/bower_components/styleswitcher/jQuery.style.switcher.js')}}"></script>
+@yield('other-js-import')
 </body>
 
 </html>
