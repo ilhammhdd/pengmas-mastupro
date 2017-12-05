@@ -1,7 +1,6 @@
 @extends('layouts.healthcare.master')
 
 @section('other-css-import')
-    {{--    <link rel="stylesheet" href="{{asset('css/materialize.min.css')}}">--}}
 @endsection
 
 @section('content-rows')
@@ -94,7 +93,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Date of Birth</label>
                                             <input id="date-of-birth" type="date" class="form-control"
-                                                   value="YYYY-MM-DD"
+                                                   {{--value="2012-20-20"--}}
                                                    name="date_of_birth">
                                         </div>
                                     </div>
@@ -151,7 +150,6 @@
 @endsection
 
 @section('other-js-import')
-    <script src="{{asset('js/materialize.min.js')}}"></script>
     <script type="text/javascript">
         var formRegisterNewPatient = $('#form-register-new-patient');
 
@@ -175,7 +173,7 @@
 //                    $('#golDarB').checked = false;
 //                    $('#golDarAB').checked = false;
 //                    $('#golDarO').checked = false;
-                    document.getElementById("date-of-birth").value = 'YYYY-MM-DD';
+                    document.getElementById("date-of-birth").value = '';
 //                    $('#date-of-birth').value = 'YYYY-MM-DD';
                     document.getElementById("place-of-birth").value = '';
 //                    $('#place-of-birth').value = '';

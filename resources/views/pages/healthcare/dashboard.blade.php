@@ -19,7 +19,7 @@
                 <div class="r-icon-stats">
                     <i class="ti-user bg-megna"></i>
                     <div class="bodystate">
-                        <h4>370</h4>
+                        <h4 id="total-new-patient"></h4>
                         <span class="text-muted">New Patient</span>
                     </div>
                 </div>
@@ -59,4 +59,26 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('other-js')
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script type="text/javascript">
+        var config = {
+            apiKey: "AIzaSyBsT-a5VPZ04pJ7yeAtXoPdhFyEdp3hENw",
+            authDomain: "healtharoundyou-1d006.firebaseapp.com",
+            databaseURL: "https://healtharoundyou-1d006.firebaseio.com",
+            projectId: "healtharoundyou-1d006",
+            storageBucket: "healtharoundyou-1d006.appspot.com",
+            messagingSenderId: "350931556557"
+        };
+        firebase.initializeApp(config);
+
+        const refTotalNewPatient = firebase.database().ref().child('total_new_patient');
+
+        refTotalNewPatient.on('value', function (snapshot) {
+            document.getElementById('total-new-patient').innerText= snapshot.val();
+            console.log(snapshot.val());
+        });
+    </script>
 @endsection
