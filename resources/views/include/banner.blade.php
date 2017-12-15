@@ -12,10 +12,10 @@
 
 						<div class="banner-center-box text-center">
 							<h1>
-								Healthcare Made Easy
+								HEALTH AROUND YOU
 							</h1>
 							<div class="description">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing industry.
+								Health Around You (HAY) is an on-demand healthcare platform (Android & iOS) that enables people to schedule physician reservations for consultation, booking queues and nearby clinical search.
 							</div>
 						</div><!-- .banner-center-box end -->
 

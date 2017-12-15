@@ -37,8 +37,7 @@
 
                                     <h2>Health Around You</h2>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem
-                                        Ipsum has been standard dummy text ever since the 1500s
+                                        Many hospital processes are very time consuming and we will help you overcome it
                                     </p>
 
                                     <div class="row">
@@ -49,9 +48,8 @@
                                                             src={{asset('images/files/box-info-2/healthcare.png')}} alt="">
                                                 </div>
                                                 <div class="box-content">
-                                                    <h4>Digitalize Your Health Care</h4>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                        industry Lorem Ipsum.</p>
+                                                    <h4>Find a suitable doctor for you</h4>
+                                                    <p>Find a doctor that suits you where you can see his reputation, his experience, and see reviews of some of the users he has handled</p>
                                                 </div><!-- .box-content end -->
                                             </div><!-- .box-info-2 end -->
 
@@ -63,9 +61,8 @@
                                                             src={{asset('images/files/box-info-2/time.png')}} alt="">
                                                 </div>
                                                 <div class="box-content">
-                                                    <h4>Saves Time</h4>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                        industry Lorem Ipsum.</p>
+                                                    <h4>Saves time in line</h4>
+                                                    <p>Helps you save time while queuing up hospital administration</p>
                                                 </div><!-- .box-content end -->
                                             </div><!-- .box-info-2 end -->
 
@@ -77,9 +74,8 @@
                                                             src={{asset('images/files/box-info-2/track-medical.png')}} alt="">
                                                 </div>
                                                 <div class="box-content">
-                                                    <h4>Track Your Medical History</h4>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                        industry Lorem Ipsum.</p>
+                                                    <h4>Providers of comprehensive health care information</h4>
+                                                    <p>Provide any information related to a reliable service provider such as doctor's schedule, facilities, polyclinic checklists and more</p>
                                                 </div><!-- .box-content end -->
                                             </div><!-- .box-info-2 end -->
 
@@ -111,8 +107,7 @@
                                     <div class="section-title text-white mt-70">
                                         <h2>How It Works</h2>
                                         <p>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                            Lorem Ipsum has been standard dummy text ever since the 1500s
+                                            We try to present everything you need in just one click and with an user-friendly interface
                                         </p>
                                     </div><!-- .section-title end -->
 
@@ -139,7 +134,8 @@
                                 <div class="col-md-7 col-md-offset-1">
 
                                     <div class="video-preview">
-                                        <iframe src="http://player.vimeo.com/video/95558527"></iframe>
+                                        {{--<iframe src="http://player.vimeo.com/video/95558527"></iframe>--}}
+                                        <iframe src="{{asset('video/hay_app promo.mp4')}}"></iframe>
                                     </div>
 
                                 </div><!-- .col-md-7 end -->
@@ -165,8 +161,7 @@
                                 <div class="section-title colored text-center">
                                     <h2>Our Partners</h2>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem
-                                        Ipsum has been standard dummy text ever since the 1500s
+                                        With all the conveniences that you will feel, we work with hospitals, pharmacies and clinics
                                     </p>
                                 </div><!-- .section-title end -->
 
@@ -174,13 +169,10 @@
                             <div class="col-md-12">
 
                                 <div class="col-md-4 text-center">
-                                    <img src={{asset('images/files/box-info-1/dummy-partner.png')}} width="100">
+                                    <img src={{asset('images/Clinics.png')}} width="100">
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <img src={{asset('images/files/box-info-1/dummy-partner.png')}} width="100">
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <img src={{asset('images/files/box-info-1/dummy-partner.png')}} width="100">
+                                    <img src={{asset('images/pharmacys.png')}} width="100">
                                 </div>
 
                             </div><!-- .col-md-12 end -->
@@ -209,9 +201,8 @@
                                         <div class="box-icon"><img
                                                     src={{asset('images/files/box-info-1/img-1.png')}} alt=""></div>
                                         <div class="box-content">
-                                            <h4>Manage Doctor's Schedule</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
-                                                tempor ever since the 1500s.</p>
+                                            <h4>Update your info easly</h4>
+                                            <p>Which will help patients find accurate information about the hospital in real time</p>
                                         </div><!-- .box-content end -->
                                     </div><!-- .box-info-1 end -->
 
@@ -222,9 +213,8 @@
                                         <div class="box-icon"><img
                                                     src={{asset('images/files/box-info-1/img-2.png')}} alt=""></div>
                                         <div class="box-content">
-                                            <h4>Manage Patient's Medical Records</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
-                                                tempor ever since the 1500s.</p>
+                                            <h4>Save time</h4>
+                                            <p>In all administrative matters</p>
                                         </div><!-- .box-content end -->
                                     </div><!-- .box-info-1 end -->
 
@@ -235,9 +225,8 @@
                                         <div class="box-icon"><img
                                                     src={{asset('images/files/box-info-1/img-3.png')}} alt=""></div>
                                         <div class="box-content">
-                                            <h4>Data Safety</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
-                                                tempor ever since the 1500s.</p>
+                                            <h4>Manage doctor’s schedule</h4>
+                                            <p>Throw away all unnecessary manual work</p>
                                         </div><!-- .box-content end -->
                                     </div><!-- .box-info-1 end -->
 
@@ -248,9 +237,8 @@
                                         <div class="box-icon"><img
                                                     src={{asset('images/files/box-info-1/img-4.png')}} alt=""></div>
                                         <div class="box-content">
-                                            <h4>Attention and Care</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
-                                                tempor ever since the 1500s.</p>
+                                            <h4>Increase earnings</h4>
+                                            <p>Minimize spending by simplifying any work that requires a lot of people</p>
                                         </div><!-- .box-content end -->
                                     </div><!-- .box-info-1 end -->
 
