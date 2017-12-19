@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class GuruTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('gurus')->insert([
+            'nik'=>'110222325',
+            'nama'=>'Graham',
+            'nama_file'=>'dummy5.jpg',
+        ]);
+        DB::table('gurus')->insert([
+            'nik'=>'110897799',
+            'nama_file'=>'dummy6.jpg',
+            'nama'=>'Julius',
+        ]);
+        DB::table('gurus')->insert([
+            'nik'=>'110897791',
+            'nama_file'=>'dummy7.jpg',
+            'nama'=>'Alex',
+        ]);
+    }
+}
