@@ -101,7 +101,7 @@ class DiscController extends Controller
                     }
                 }
 
-                $tempHasil = $step[$keyStep]["nilai"];
+                $tempHasil = $step[$keyStep]["nilaiConverted"];
                 arsort($tempHasil);
                 foreach ($tempHasil as $key => $value) {
                     if ($count == 2) {
@@ -127,22 +127,8 @@ class DiscController extends Controller
             }
         }
 
-//        echo $step[2]["nilaiConverted"]["X"];
-//        echo $step[2]["nilaiConverted"]["Y"];
-//        echo $step[2]["nilaiConverted"]["Z"];
-//        echo $step[2]["nilaiConverted"]["R"];
-//
-//        echo $step[3]["nilaiConverted"]["X"];
-//        echo $step[3]["nilaiConverted"]["Y"];
-//        echo $step[3]["nilaiConverted"]["Z"];
-//        echo $step[3]["nilaiConverted"]["R"];
-
-
-//        echo json_encode($step);
-
         return view('pages.disc_result')->with([
             'step'=>$step
         ]);
-//        echo $step[3]["nilaiConverted"]["X"] = Graph3Dictionary::where([["point_nama", "X"], ["nilai_graph", $step[3]["nilai"]["X"]]])->first();
     }
 }
