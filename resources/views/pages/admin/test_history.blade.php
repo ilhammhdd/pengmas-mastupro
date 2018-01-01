@@ -33,7 +33,6 @@
                             <th class="text-center">Current Style</th>
                             <th class="text-center">Pressure Style</th>
                             <th class="text-center">Self Style</th>
-                            <th class="text-center">Kelas</th>
                             <th class="text-center">Actions</th>
                         </tr>
                         </thead>

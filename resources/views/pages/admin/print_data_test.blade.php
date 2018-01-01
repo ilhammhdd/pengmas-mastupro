@@ -50,10 +50,10 @@
                               <th class="text-center">Nama Test</th>
                               <th class="text-center">Nama Peserta</th>
                               <th class="text-center">Jenis Peserta</th>
+                              <th class="text-center">Kelas</th>
                               <th class="text-center">Current Style</th>
                               <th class="text-center">Pressure Style</th>
                               <th class="text-center">Self Style</th>
-                              <th class="text-center">Kelas</th>
                           </tr>
 
                           </thead>
