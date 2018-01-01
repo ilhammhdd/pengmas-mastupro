@@ -141,6 +141,5 @@ class DiscController extends Controller
         return view('pages.disc_result')->with([
             'step'=>$step
         ]);
-//        echo $step[3]["nilaiConverted"]["X"] = Graph3Dictionary::where([["point_nama", "X"], ["nilai_graph", $step[3]["nilai"]["X"]]])->first();
     }
 }
