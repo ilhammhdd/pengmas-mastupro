@@ -6,7 +6,7 @@
 
 @section('sidebar')
     @if(session()->get('the_role')=="admin")
-
+        @include('layouts.admin.sidebar')
     @elseif(session()->get('the_role') == "guru")
         @include('layouts.guru.sidebar')
     @elseif(session()->get('the_role') == "siswa")
@@ -16,7 +16,7 @@
 
 @section('navbar')
     @if(session()->get('the_role')=="admin")
-
+        @include('layouts.admin.sidebar')
     @elseif(session()->get('the_role') == "guru")
         @include('layouts.guru.navbar')
     @elseif(session()->get('the_role') == "siswa")

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Graph1Dictionary;
 use App\Graph2Dictionary;
 use App\Graph3Dictionary;
+use App\TestHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,7 +66,8 @@ class DiscController extends Controller
     public function showResult($testHistoryId)
     {
         $count = 0;
-        $testHistory = Auth::user()->testHistory()->where("id", $testHistoryId)->first();
+        // $testHistory = Auth::user()->testHistory()->where("id", $testHistoryId)->first();
+        $testHistory = TestHistory::where("id", $testHistoryId)->first();
         $stepTotalScore = $testHistory->stepTotalScore()->get();
 
         $step = $this->getEmptyStepArray();
@@ -86,22 +88,18 @@ class DiscController extends Controller
                         switch ($keyStep) {
                             case 1:
                                 $step[$keyStep][$keyEachStep][$keyNilaiStep] = Graph1Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first()->nilai_graph_converted;
-
                                 break;
                             case 2:
                                 $step[$keyStep][$keyEachStep][$keyNilaiStep] = Graph2Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first()->nilai_graph_converted;
-
                                 break;
-
                             case 3:
                                 $step[$keyStep][$keyEachStep][$keyNilaiStep] = Graph3Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first()->nilai_graph_converted;
-
                                 break;
                         }
                     }
                 }
 
-                $tempHasil = $step[$keyStep]["nilai"];
+                $tempHasil = $step[$keyStep]["nilaiConverted"];
                 arsort($tempHasil);
                 foreach ($tempHasil as $key => $value) {
                     if ($count == 2) {
@@ -139,7 +137,7 @@ class DiscController extends Controller
 
 
 //        echo json_encode($step);
-
+        // dd($step);
         return view('pages.disc_result')->with([
             'step'=>$step
         ]);

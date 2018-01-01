@@ -8,6 +8,8 @@ class DiscGroup extends Model
 {
     protected $table = 'disc_groups';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nomor'
     ];

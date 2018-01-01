@@ -9,7 +9,7 @@ class Guru extends Model
     protected $table = 'gurus';
 
     protected $fillable = [
-        'id', 'nik', 'nama'
+        'id', 'nik', 'nama', 'nama_file'
     ];
 
     public function user()

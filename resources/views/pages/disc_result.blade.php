@@ -15,7 +15,7 @@
 
 @section('sidebar')
     @if(session()->get('the_role')=="admin")
-
+        @include('layouts.admin.sidebar')
     @elseif(session()->get('the_role') == "guru")
         @include('layouts.guru.sidebar')
     @elseif(session()->get('the_role') == "siswa")
@@ -25,7 +25,7 @@
 
 @section('navbar')
     @if(session()->get('the_role')=="admin")
-
+      @include('layouts.admin.navbar')
     @elseif(session()->get('the_role') == "guru")
         @include('layouts.guru.navbar')
     @elseif(session()->get('the_role') == "siswa")
@@ -34,7 +34,7 @@
 @endsection
 
 @section('content')
-    <div class="row" style="margin-bottom:200px;">
+    <div class="row" style="margin-bottom:100px;">
         <div class="col-md-5">
             <div id="chartPerformance1" class="ct-chart "></div>
         </div>
@@ -54,7 +54,7 @@
                     aliquet tellus. Sed ac vestibulum magna, vitae dictum tellus. Aliquam quis neque eu tortor
                     scelerisque ornare id at orci. Integer id magna mauris.</p>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <h4>Pekerjaan : </h4>
                 <p>
                     Curabitur mollis ipsum tellus, in aliquam urna dictum porta. Nullam purus orci, efficitur eu
@@ -64,10 +64,10 @@
             <div class="row">
                 <h4>Tokoh : </h4>
                 <p>Vestibulum justo tellus, lobortis non elit ac, suscipit dignissim risus.</p>
-            </div>
+            </div> --}}
         </div>
     </div>
-    <div class="row" style="margin-bottom:200px;">
+    <div class="row" style="margin-bottom:100px;">
         <div class="col-md-5">
             <div id="chartPerformance2" class="ct-chart "></div>
         </div>
@@ -87,7 +87,7 @@
                     aliquet tellus. Sed ac vestibulum magna, vitae dictum tellus. Aliquam quis neque eu tortor
                     scelerisque ornare id at orci. Integer id magna mauris.</p>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <h4>Pekerjaan : </h4>
                 <p>
                     Curabitur mollis ipsum tellus, in aliquam urna dictum porta. Nullam purus orci, efficitur eu
@@ -97,7 +97,7 @@
             <div class="row">
                 <h4>Tokoh : </h4>
                 <p>Vestibulum justo tellus, lobortis non elit ac, suscipit dignissim risus.</p>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="row">
@@ -120,7 +120,7 @@
                     aliquet tellus. Sed ac vestibulum magna, vitae dictum tellus. Aliquam quis neque eu tortor
                     scelerisque ornare id at orci. Integer id magna mauris.</p>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <h4>Pekerjaan : </h4>
                 <p>
                     Curabitur mollis ipsum tellus, in aliquam urna dictum porta. Nullam purus orci, efficitur eu
@@ -130,7 +130,7 @@
             <div class="row">
                 <h4>Tokoh : </h4>
                 <p>Vestibulum justo tellus, lobortis non elit ac, suscipit dignissim risus.</p>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

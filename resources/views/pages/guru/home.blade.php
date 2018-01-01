@@ -4,6 +4,18 @@
     Halaman Siswa
 @endsection
 
+@section('other-css')
+  <style>
+    .main-content {
+      background-image: url('{{ asset('img/bg-user.jpg') }}');
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+@endsection
+
 @section('sidebar')
     @include('layouts.guru.sidebar')
 @endsection
@@ -16,12 +28,12 @@
     <div class="col-md-4 col-md-offset-4">
         <div class="card card-user">
             <div class="image">
-                <img src="{{asset('img/full-screen-image-3.jpg')}}"/>
+                <img src="{{asset('img/header-profile.png')}}"/>
             </div>
             <div class="content">
                 <div class="author">
                     <a href="#">
-                        <img class="avatar border-gray" src="{{asset('img/faces/face-2.jpg')}}" alt="..."/>
+                        <img class="avatar border-gray" src="{{asset('img/faces/face-0.jpg')}}" alt="..."/>
 
                         <h4 class="title">{{$guru->nama}}<br/>
 {{--                            <small>{{$guru->kelas->nama}}</small>--}}

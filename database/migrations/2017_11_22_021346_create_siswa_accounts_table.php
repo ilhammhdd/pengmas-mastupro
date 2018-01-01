@@ -21,8 +21,8 @@ class CreateSiswaAccountsTable extends Migration
         });
 
         Schema::table('siswa_accounts',function (Blueprint $table){
-            $table->foreign('siswa_id')->references('id')->on('siswas');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

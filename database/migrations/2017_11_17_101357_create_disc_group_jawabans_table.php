@@ -22,8 +22,8 @@ class CreateDiscGroupJawabansTable extends Migration
             $table->timestamps();
         });
         Schema::table('disc_group_jawabans', function (Blueprint $table) {
-            $table->foreign('disc_group_nomor')->references('nomor')->on('disc_groups');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('disc_group_nomor')->references('nomor')->on('disc_groups')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

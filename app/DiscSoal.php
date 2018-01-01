@@ -8,6 +8,8 @@ class DiscSoal extends Model
 {
     protected $table = 'disc_soals';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'disc_group_nomor', 'soal', 'kunci_plus', 'kunci_minus'
     ];

@@ -21,7 +21,7 @@ class CreateDiscSoalsTable extends Migration
             $table->string('kunci_minus');
         });
         Schema::table('disc_soals', function (Blueprint $table) {
-            $table->foreign('disc_group_nomor')->references('nomor')->on('disc_groups');
+            $table->foreign('disc_group_nomor')->references('nomor')->on('disc_groups')->onDelete('cascade');;
         });
     }
 

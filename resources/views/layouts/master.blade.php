@@ -39,7 +39,7 @@
 
         <div class="main-content">
             <div class="container-fluid">
-                <div id="content">
+                <div id="content" >
                     @yield('content')
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <p class="copyright pull-right">
                     &copy;
                     <script>document.write(new Date().getFullYear())</script>
-                    <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    {{-- <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a <b></b>etter web --}}
                 </p>
             </div>
         </footer>
@@ -184,6 +184,43 @@
                 }
             });
         }
+
+        function showNotification(type, contentMsg){
+            $.notify({
+                icon: "pe-7s-gift",
+                message: contentMsg
+
+              },{
+                  type: type,
+                  timer: 4000,
+                  placement: {
+                      from: 'top',
+                      align: 'right'
+                  }
+              });
+          }
+
+          @if(Session::has('success'))
+             showNotification('success', '{{ Session::get('success') }}')
+             @php
+               Session::forget('success');
+             @endphp
+          @endif
+
+          @if(Session::has('danger'))
+             showNotification('danger', '{{ Session::get('danger') }}')
+             @php
+               Session::forget('danger');
+             @endphp
+          @endif
+
+          @if(Session::has('info'))
+             showNotification('info', '{{ Session::get('info') }}')
+             @php
+               Session::forget('info');
+             @endphp
+          @endif
+
     </script>
 
     @yield('other-js')

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Crypt;
+use App\SiswaAccount;
+use App\GuruAccount;
 
 class User extends Authenticatable
 {
@@ -73,7 +75,13 @@ class User extends Authenticatable
         $siswaAccount->save();
     }
 
-    public static function registerNewUserGuru(Request $request)
+    public static function unRegisterUserSiswa(Request $request){
+        $siswaAccount = SiswaAccount::where('siswa_id', '=', $request->input('id'))->first();
+        $user = User::where('id', '=', $siswaAccount->user_id)->first();
+        $user->delete();
+    }
+
+      public static function registerNewUserGuru(Request $request)
     {
         $roleGuru = Role::where('nama', 'guru')->first();
 
@@ -88,5 +96,11 @@ class User extends Authenticatable
         $guruAccount->user()->associate($user);
         $guruAccount->guru()->associate($request->input('id'));
         $guruAccount->save();
+    }
+
+    public static function unRegisterUserGuru(Request $request){
+        $guruAccount = GuruAccount::where('guru_id', '=', $request->input('id'))->first();
+        $user = User::where('id', '=', $guruAccount->user_id)->first();
+        $user->delete();
     }
 }

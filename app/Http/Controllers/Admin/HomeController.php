@@ -26,7 +26,15 @@ class HomeController extends Controller
         User::registerNewUserSiswa($request);
     }
 
+    public function unRegisterUserSiswa(Request $request){
+        User::unRegisterUserSiswa($request);
+    }
+
     public function registerNewUserGuru(Request $request){
         User::registerNewUserGuru($request);
+    }
+
+    public function unRegisterUserGuru(Request $request){
+        User::unRegisterUserGuru($request);
     }
 }

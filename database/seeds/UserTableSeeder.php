@@ -32,7 +32,6 @@ class UserTableSeeder extends Seeder
         $guru1->remember_token = Crypt::encryptString('remember_this');
         $guru1->save();
         $guru1->role()->attach($role_guru);
-        $guru1->role()->attach($role_siswa);
 
         $siswa1 = new User();
         $siswa1->username = 'siswa1';

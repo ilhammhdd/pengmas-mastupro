@@ -21,8 +21,8 @@ class CreateGuruAccountsTable extends Migration
         });
 
         Schema::table('guru_accounts', function (Blueprint $table) {
-            $table->foreign('guru_id')->references('id')->on('gurus');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('guru_id')->references('id')->on('gurus')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 
