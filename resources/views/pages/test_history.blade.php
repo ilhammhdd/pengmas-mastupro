@@ -50,7 +50,7 @@
                                        rel="tooltip"
                                        title="Lihat Hasil"
                                        class="btn btn-info btn-simple btn-lg" style="opacity: 1;">
-                                        <i class="fa fa-play"></i>
+                                        <i class="fa fa-book"></i>
                                     </a>
                                 </td>
                             </tr>

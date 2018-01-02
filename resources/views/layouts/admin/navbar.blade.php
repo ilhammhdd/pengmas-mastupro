@@ -15,8 +15,8 @@
               </button>
               <a class="navbar-brand" href="#">Admin Sistem Profiling Siswa</a>
           </div>
-        <div id="print-data-button">
+          <div id="print-data-button">
 
-        </div>
+          </div>
     </div>
 </nav>
