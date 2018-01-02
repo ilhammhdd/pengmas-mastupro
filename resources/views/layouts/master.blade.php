@@ -189,7 +189,7 @@
 
         function showNotification(type, contentMsg){
             $.notify({
-                icon: "pe-7s-gift",
+                icon: "pe-7s-bell",
                 message: contentMsg
 
               },{
