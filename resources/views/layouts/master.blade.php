@@ -124,6 +124,7 @@
             jsonRadioMost[name] = value;
             localStorage.setItem("radioMost", JSON.stringify(jsonRadioMost));
             $('#radioLeastId' + discGroupNomor + discSoalNomor).attr('disabled', true);
+            checkFinishDiscTest();
         }
 
         function radioLeastClicked(name, value, discGroupNomor, discSoalNomor) {
@@ -134,6 +135,7 @@
             jsonRadioLeast[name] = value;
             localStorage.setItem("radioLeast", JSON.stringify(jsonRadioLeast));
             $('#radioMostId' + discGroupNomor + discSoalNomor).attr('disabled', true);
+            checkFinishDiscTest();
         }
 
         function submitTest() {
