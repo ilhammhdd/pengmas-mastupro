@@ -12,6 +12,7 @@ class SiswaHomeComposer
 {
     protected $siswa;
     protected $kelas;
+    protected $username;
 
     public function __construct()
     {
@@ -19,13 +20,15 @@ class SiswaHomeComposer
         $siswaAccount = $user->siswaAccount()->first();
         $this->siswa = $siswaAccount->siswa()->first();
         $this->kelas = Kelas::all();
+        $this->username = $user->username;
     }
 
     public function compose(View $view)
     {
         $view->with([
             'siswa' => $this->siswa,
-            'kelas' => $this->kelas
+            'kelas' => $this->kelas,
+            'username' => $this->username
         ]);
     }
 }

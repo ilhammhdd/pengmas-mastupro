@@ -86,6 +86,7 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::get('/siswa/show/edit-profile', 'Siswa\HomeController@showEditProfile')->name('siswa.show_edit_profile');
         Route::post('/siswa/edit-profile', 'Siswa\HomeController@editProfile')->name('siswa.edit_profile');
+        Route::put('/siswa/edit-username', 'Siswa\HomeController@editUsername')->name('siswa.edit_username');
     });
 });
 

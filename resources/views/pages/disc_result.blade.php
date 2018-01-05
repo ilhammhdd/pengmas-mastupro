@@ -106,7 +106,7 @@
         </div>
         <div class="col-md-5">
             <div class="row">
-                <h4>Self Style : <b>{{$step[3]["hasil"][0]}}{{$step[2]["hasil"][1]}}</b></h4>
+                <h4>Self Style : <b>{{$step[3]["hasil"][0]}}{{$step[3]["hasil"][1]}}</b></h4>
             </div>
             <div class="row">
                 <h4>Penjelasan : </h4>

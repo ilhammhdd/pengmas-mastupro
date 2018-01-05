@@ -11,6 +11,64 @@ use Illuminate\Support\Facades\Auth;
 
 class DiscController extends Controller
 {
+    private $borderValues =
+        [
+            1 => [
+                'X' => [
+                    'above' => 7,
+                    'below' => 6
+                ],
+                'Y' => [
+                    'above' => 4,
+                    'below' => 3
+                ],
+                'Z' => [
+                    'above' => 5,
+                    'below' => 4
+                ],
+                'R' => [
+                    'above' => 4,
+                    'below' => 3
+                ]
+            ],
+            2 => [
+                'X' => [
+                    'above' => 5,
+                    'below' => 6
+                ],
+                'Y' => [
+                    'above' => 4,
+                    'below' => 5
+                ],
+                'Z' => [
+                    'above' => 6,
+                    'below' => 7
+                ],
+                'R' => [
+                    'above' => 6,
+                    'below' => 7
+                ]
+            ],
+            3 => [
+                'X' => [
+                    'above' => 1,
+                    'below' => 0
+                ],
+                'Y' => [
+                    'above' => 0,
+                    'below' => -1
+                ],
+                'Z' => [
+                    'above' => 0,
+                    'below' => -1
+                ],
+                'R' => [
+                    'above' => -2,
+                    'below' => -3
+                ]
+            ]
+        ];
+
     protected function getEmptyStepArray()
     {
         return $step =
@@ -66,7 +124,6 @@ class DiscController extends Controller
     public function showResult($testHistoryId)
     {
         $count = 0;
-        // $testHistory = Auth::user()->testHistory()->where("id", $testHistoryId)->first();
         $testHistory = TestHistory::where("id", $testHistoryId)->first();
         $stepTotalScore = $testHistory->stepTotalScore()->get();
 
@@ -87,13 +144,28 @@ class DiscController extends Controller
                     foreach ($nilaiStep as $keyNilaiStep => $valueNilaiStep) {
                         switch ($keyStep) {
                             case 1:
-                                $step[$keyStep][$keyEachStep][$keyNilaiStep] = Graph1Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first()->nilai_graph_converted;
+                                $nilaiConvertedTemp = Graph1Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first();
+                                if ($nilaiConvertedTemp) {
+                                    $step[$keyStep][$keyEachStep][$keyNilaiStep] = $nilaiConvertedTemp->nilai_graph_converted;
+                                } else {
+                                    $step[$keyStep][$keyEachStep][$keyNilaiStep] = $this->getNearestNilaiConvertedTowardsMiddleLine($keyStep, $keyNilaiStep, $step[$keyStep]["nilai"][$keyNilaiStep]);
+                                }
                                 break;
                             case 2:
-                                $step[$keyStep][$keyEachStep][$keyNilaiStep] = Graph2Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first()->nilai_graph_converted;
+                                $nilaiConvertedTemp = Graph2Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first();
+                                if ($nilaiConvertedTemp) {
+                                    $step[$keyStep][$keyEachStep][$keyNilaiStep] = $nilaiConvertedTemp->nilai_graph_converted;
+                                } else {
+                                    $step[$keyStep][$keyEachStep][$keyNilaiStep] = $this->getNearestNilaiConvertedTowardsMiddleLine($keyStep, $keyNilaiStep, $step[$keyStep]["nilai"][$keyNilaiStep]);
+                                }
                                 break;
                             case 3:
-                                $step[$keyStep][$keyEachStep][$keyNilaiStep] = Graph3Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first()->nilai_graph_converted;
+                                $nilaiConvertedTemp = Graph3Dictionary::where([["point_nama", $keyNilaiStep], ["nilai_graph", $step[$keyStep]["nilai"][$keyNilaiStep]]])->first();
+                                if ($nilaiConvertedTemp) {
+                                    $step[$keyStep][$keyEachStep][$keyNilaiStep] = $nilaiConvertedTemp->nilai_graph_converted;
+                                } else {
+                                    $step[$keyStep][$keyEachStep][$keyNilaiStep] = $this->getNearestNilaiConvertedTowardsMiddleLine($keyStep, $keyNilaiStep, $step[$keyStep]["nilai"][$keyNilaiStep]);
+                                }
                                 break;
                         }
                     }
@@ -125,21 +197,45 @@ class DiscController extends Controller
             }
         }
 
-//        echo $step[2]["nilaiConverted"]["X"];
-//        echo $step[2]["nilaiConverted"]["Y"];
-//        echo $step[2]["nilaiConverted"]["Z"];
-//        echo $step[2]["nilaiConverted"]["R"];
-//
-//        echo $step[3]["nilaiConverted"]["X"];
-//        echo $step[3]["nilaiConverted"]["Y"];
-//        echo $step[3]["nilaiConverted"]["Z"];
-//        echo $step[3]["nilaiConverted"]["R"];
-
-
-//        echo json_encode($step);
-        // dd($step);
         return view('pages.disc_result')->with([
-            'step'=>$step
+            'step' => $step
         ]);
+    }
+
+    public function getNearestNilaiConvertedTowardsMiddleLine($graph, $pointNama, $nilaiGraph)
+    {
+        $g = null;
+
+        if ($nilaiGraph > $this->borderValues[$graph][$pointNama]['above']) {
+            switch ($graph) {
+                case 1:
+                    $g = Graph1Dictionary::where([["point_nama", $pointNama], ["nilai_graph", --$nilaiGraph]])->first();
+                    break;
+                case 2:
+                    $g = Graph2Dictionary::where([["point_nama", $pointNama], ["nilai_graph", ++$nilaiGraph]])->first();
+                    break;
+                case 3:
+                    $g = Graph3Dictionary::where([["point_nama", $pointNama], ["nilai_graph", --$nilaiGraph]])->first();
+                    break;
+            }
+        } elseif ($nilaiGraph < $this->borderValues[$graph][$pointNama]['below']) {
+            switch ($graph) {
+                case 1:
+                    $g = Graph1Dictionary::where([["point_nama", $pointNama], ["nilai_graph", ++$nilaiGraph]])->first();
+                    break;
+                case 2:
+                    $g = Graph2Dictionary::where([["point_nama", $pointNama], ["nilai_graph", --$nilaiGraph]])->first();
+                    break;
+                case 3:
+                    $g = Graph3Dictionary::where([["point_nama", $pointNama], ["nilai_graph", ++$nilaiGraph]])->first();
+                    break;
+            }
+        }
+
+        if (!$g) {
+            $this->getNearestNilaiConvertedTowardsMiddleLine($graph, $pointNama, $nilaiGraph);
+        }
+
+        return $g->nilai_graph_converted;
     }
 }

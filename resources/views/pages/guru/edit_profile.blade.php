@@ -24,11 +24,6 @@
                         <input id="nama-guru" type="text" placeholder="Enter Nama" class="form-control" name="nama"
                                value="{{$guru->nama}}">
                     </div>
-                    <div class="form-group">
-                        <label>NIK</label>
-                        <input id="nik-guru" type="text" placeholder="Enter NIK" class="form-control" name="nik"
-                               value="{{$guru->nik}}">
-                    </div>
 
                     <button type="submit" class="btn btn-fill btn-info">Submit</button>
                 </form>
