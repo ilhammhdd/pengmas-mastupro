@@ -39,7 +39,7 @@
 
         <div class="main-content">
             <div class="container-fluid">
-                <div id="content" >
+                <div id="content">
                     @yield('content')
                 </div>
             </div>
@@ -187,41 +187,58 @@
             });
         }
 
-        function showNotification(type, contentMsg){
+        function showNotification(type, contentMsg) {
             $.notify({
                 icon: "pe-7s-bell",
                 message: contentMsg
 
-              },{
-                  type: type,
-                  timer: 4000,
-                  placement: {
-                      from: 'top',
-                      align: 'right'
-                  }
-              });
-          }
+            }, {
+                type: type,
+                timer: 4000,
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                }
+            });
+        }
 
-          @if(Session::has('success'))
-             showNotification('success', '{{ Session::get('success') }}')
-             @php
-               Session::forget('success');
-             @endphp
-          @endif
+        function showNotif(icon, message, typeNumber, timer, placementFrom, placementAlign) {
+            $.notify(
+                {
+                    icon: icon,
+                    message: message
+                },
+                {
+                    type: type[typeNumber],
+                    timer: timer,
+                    placement: {
+                        from: placementFrom,
+                        align: placementAlign
+                    }
+                }
+            );
+        }
 
-          @if(Session::has('danger'))
-             showNotification('danger', '{{ Session::get('danger') }}')
-             @php
-               Session::forget('danger');
-             @endphp
-          @endif
+        @if(Session::has('success'))
+           showNotification('success', '{{ Session::get('success') }}')
+        @php
+          Session::forget('success');
+        @endphp
+     @endif
 
-          @if(Session::has('info'))
-             showNotification('info', '{{ Session::get('info') }}')
-             @php
-               Session::forget('info');
-             @endphp
-          @endif
+     @if(Session::has('danger'))
+        showNotification('danger', '{{ Session::get('danger') }}')
+        @php
+          Session::forget('danger');
+        @endphp
+     @endif
+
+     @if(Session::has('info'))
+        showNotification('info', '{{ Session::get('info') }}')
+        @php
+            Session::forget('info');
+        @endphp
+        @endif
 
     </script>
 

@@ -23,9 +23,12 @@ class HomeController extends Controller
     {
         $guru = Guru::find(Auth::user()->guruAccount()->first()->guru()->first()->id);
         $guru->nama = $request->input('nama');
-        $guru->nik = $request->input('nik');
         $guru->save();
 
-        return redirect(route('guru.show_edit_profile'));
+        return response()->json([
+            'success' => true,
+            'route' => route('guru.show_edit_profile'),
+            'message' => 'berhasil edit profile'
+        ]);
     }
 }

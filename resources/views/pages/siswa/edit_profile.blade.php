@@ -17,23 +17,18 @@
         <div class="card card-user">
             <div class="header">Edit Profile</div>
             <div class="content">
-                <form method="post" action="{{route('siswa.edit_profile')}}">
+                <form id="form-edit-profile" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label>Nama</label>
-                        <input id="nama-guru" type="text" placeholder="Enter Nama" class="form-control" name="nama"
+                        <input id="nama" type="text" placeholder="Enter Nama" class="form-control" name="nama"
                                value="{{$siswa->nama}}">
                     </div>
-                    {{--<div class="form-group">
-                        <label>NIS</label>
-                        <input id="nik-guru" type="text" placeholder="Enter NIM" class="form-control" name="nis"
-                               value="{{$siswa->nis}}">
-                    </div>--}}
                     <div class="form-group">
                         <label>Kelas</label>
                         <div class="row">
                             <div class="col-md-6">
-                                <select name="kelas" class="selectpicker" data-title="Pilih Kelas"
+                                <select id="kelas" name="kelas" class="selectpicker" data-title="Pilih Kelas"
                                         data-style="btn-default btn-block" data-menu-style="dropdown-blue">
                                     @foreach($kelas as $k)
                                         <option value="{{$k->id}}">{{$k->nama}}</option>
@@ -74,6 +69,13 @@
                 <form id="form-edit-password" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
+                        <label>Password Lama</label>
+                        <input id="old-password" type="password" placeholder="Enter Password Lama" class="form-control"
+                               name="old_password"
+                               value="">
+                    </div>
+                    <p id="verify-old-password"></p>
+                    <div class="form-group">
                         <label>Password Baru</label>
                         <input id="new-password" type="password" placeholder="Enter Password Baru" class="form-control"
                                name="new_password"
@@ -81,10 +83,11 @@
                     </div>
                     <div class="form-group">
                         <label>Konfirmasi Password Baru</label>
-                        <input id="confirm-new-guru" type="password" placeholder="Konfirmasi Password Baru"
+                        <input id="confirm-new-password" type="password" placeholder="Konfirmasi Password Baru"
                                class="form-control" name="confirm_new_password"
                                value="">
                     </div>
+                    <p id="verify-password"></p>
 
                     <button type="submit" class="btn btn-fill btn-info">Submit</button>
                 </form>
@@ -95,22 +98,29 @@
 
 @section('other-js')
     <script type="text/javascript">
-        $('#form-edit-password').submit(function (event) {
+        $(document).ready(function () {
+            $('select[id="kelas"]').val('{{$siswa->kelas_id}}').change();
+        });
+
+        $('#form-edit-profile').submit(function (event) {
             event.preventDefault();
 
             var data = {};
-            data.new_password = $('#new-password').val();
+            data.nama = $('#nama').val();
+            data.kelas = $('#kelas').val();
 
             $.ajax({
-                url: '{{route('edit_password')}}',
-                type: 'post',
+                url: '{{route('siswa.edit_profile')}}',
+                type: 'PUT',
                 data: data,
-                success: function () {
-                    console.log("sukses");
-                    logout();
+                success: function (response) {
+                    showNotif("fa fa-check", response.message, 2, 1800, 'top', 'right');
+
+                    setTimeout(function () {
+                        window.location = response.route;
+                    }, 1850);
                 },
-                error: function () {
-                    console.log("gagal");
+                error: function (response) {
                 }
             });
         });
@@ -123,49 +133,81 @@
             data.new_username = $('#new-username').val();
 
             $.ajax({
-                url: '{{route('siswa.edit_username')}}',
+                url: '{{route('edit_username')}}',
                 type: 'put',
                 data: data,
                 success: function (response) {
                     if (response.username_exists) {
-                        $.notify(
-                            {
-                                icon: "fa fa-exclamation",
-                                message: response.message
-                            },
-                            {
-                                type: type[4],
-                                timer: 3000,
-                                placement: {
-                                    from: 'top',
-                                    align: 'right'
-                                }
-                            }
-                        )
+                        showNotif("fa fa-exclamation", response.message, 4, 1800, 'top', 'right');
                     } else {
-                        $.notify(
-                            {
-                                icon: "fa fa-check",
-                                message: response.message
-                            },
-                            {
-                                type: type[2],
-                                timer: 3000,
-                                placement: {
-                                    from: 'top',
-                                    align: 'right'
-                                }
-                            }
-                        );
+                        showNotif("fa fa-check", response.message, 2, 1800, 'top', 'right');
                         setTimeout(function () {
-                            window.location = response.route
-                        }, 3100);
+                            window.location = '{{route('siswa.show_edit_profile')}}';
+                        }, 1850);
                     }
                 },
                 error: function (response) {
-
                 }
             });
+        });
+
+        var password_verified = false;
+
+        $('#old-password').on('keyup', function () {
+            var old_password = $('#old-password').val();
+
+            if (old_password == '') {
+                $('#verify-old-password').html('Kolom tidak boleh kosong').css('color', 'red');
+            } else {
+                $('#verify-old-password').html('');
+            }
+        });
+
+        $('#new-password, #confirm-new-password').on('keyup', function () {
+
+            var new_password = $('#new-password').val();
+            var confirm_new_password = $('#confirm-new-password').val();
+
+            if (new_password == '' || confirm_new_password == '') {
+                $('#verify-password').html('Kolom tidak boleh kosong').css('color', 'red');
+                password_verified = false;
+            } else if (new_password != confirm_new_password) {
+                $('#verify-password').html('Password harus sesuai').css('color', 'red');
+                password_verified = false;
+            } else {
+                $('#verify-password').html('');
+                password_verified = true;
+            }
+        });
+
+        $('#form-edit-password').submit(function (event) {
+            event.preventDefault();
+
+            var data = {};
+            data.old_password = $('#old-password').val();
+            data.new_password = $('#new-password').val();
+
+            if (password_verified) {
+                $.ajax({
+                    url: '{{route('edit_password')}}',
+                    type: 'PUT',
+                    data: data,
+                    success: function (response) {
+                        if (response.old_password_verified) {
+                            showNotif('fa fa-check', response.message, 2, 1800, 'top', 'right');
+                            setTimeout(function () {
+                                window.location = '{{route('siswa.show_edit_profile')}}';
+                            }, 1850);
+                        } else {
+                            showNotif('fa fa-exclamation', response.message, 4, 1800, 'top', 'right');
+                        }
+                    },
+                    error: function (response) {
+                    }
+                });
+            } else {
+                showNotif('fa fa-exclamation', "password tidak sesuai", 4, 1800, 'top', 'right')
+            }
         });
     </script>
 @endsection

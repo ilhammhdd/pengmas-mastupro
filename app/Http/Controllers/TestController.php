@@ -34,16 +34,16 @@ class TestController extends Controller
             session()->put('enrollmentStatus', "authorized");
             return response()->json([
                 'success' => true,
-                'enrollmentKeyStatus' => true,
+                'key_verified' => true,
                 'test' => strtolower($request->get('namaTest')),
-                'message' => 'Enrollment key benar'
+                'message' => 'enrollment key benar'
             ]);
         }
         return response()->json([
             'success' => true,
-            'enrollmentKeyStatus' => false,
+            'key_verified' => false,
             'test' => strtolower($request->get('namaTest')),
-            'message' => 'Enrollment key salah'
+            'message' => 'enrollment key salah'
         ]);
     }
 

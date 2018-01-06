@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DiscGroupsTableSeeder::class);
         $this->call(DiscSoalsTableSeeder::class);
         $this->call(TestsTableSeeder::class);
+        $this->call(ExplanationsTableSeeder::class);
     }
 }

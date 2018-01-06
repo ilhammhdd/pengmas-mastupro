@@ -33,4 +33,9 @@ class TestHistory extends Model
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    public function testResult()
+    {
+        return $this->hasOne('App\TestResult', 'test_history_id', 'id');
+    }
 }

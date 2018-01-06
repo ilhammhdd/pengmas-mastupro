@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -28,31 +29,11 @@ class HomeController extends Controller
         $siswa->kelas_id = $request->input('kelas');
         $siswa->save();
 
-        return redirect(route('siswa.show_edit_profile'));
-    }
-
-    public function editUsername(Request $request)
-    {
-        $checkUsername = User::where('username', $request->input('new_username'))->first();
-        if ($checkUsername) {
-            session()->put('message', 'username sudah digunakan');
-
-            return response()->json([
-                'success' => true,
-                'username_exists' => true,
-                'message' => 'username sudah digunakan'
-            ]);
-        } else {
-            $user = User::where('username', $request->input('old_username'))->first();
-            $user->username = $request->input('new_username');
-            $user->save();
-
-            return response()->json([
-                'success' => true,
-                'username_exists' => false,
-                'route' => route('siswa.show_edit_profile'),
-                'message' => 'berhasil edit username'
-            ]);
-        }
+//        return redirect(route('siswa.show_edit_profile'));
+        return response()->json([
+            'success' => true,
+            'route' => route('siswa.show_edit_profile'),
+            'message' => 'berhasil edit profile'
+        ]);
     }
 }

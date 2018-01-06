@@ -15,10 +15,12 @@ use Illuminate\View\View;
 class GuruHomeComposer
 {
     protected $guru;
+    protected $user;
 
     public function __construct()
     {
         $user = User::where('id', auth()->user()["id"])->first();
+        $this->user = $user;
         $guruAccount = $user->guruAccount()->first();
         $this->guru = $guruAccount->guru()->first();
     }
@@ -26,7 +28,8 @@ class GuruHomeComposer
     public function compose(View $view)
     {
         $view->with([
-            'guru' => $this->guru
+            'guru' => $this->guru,
+            'user' => $this->user
         ]);
     }
 }

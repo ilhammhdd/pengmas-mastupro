@@ -7,13 +7,9 @@ Route::get('/login-view', function () {
     return view('pages.login');
 })->name('formLogin');
 
-// Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'web'], function () {
-
-    Route::post('/user/edit-password', 'ResetPasswordController@editPassword')->name('edit_password');
-
     Route::post('/test/enrollment-key', 'TestController@checkEnrollmentKey')->name('test.check_enrollment_key');
     Route::group(['middleware' => 'checkEnrollmentKey'], function () {
         Route::get('/test/disc', 'TestController@showDiscTest')->name('test.show_disc_test');
@@ -23,6 +19,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/test/show-history', 'TestController@showHistory')->name('test.show_history');
 
     Route::get('/disc/show-result/{testHistoryId}', 'DiscController@showResult')->name('disc.show_result');
+
+    Route::put('/user/edit-username', 'UserController@editUsername')->name('edit_username');
+    Route::put('/user/edit-password', 'UserController@editPassword')->name('edit_password');
 
     Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.index');
@@ -76,7 +75,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/guru/logout', 'Auth\LoginController@logout')->name('guru.logout');
 
         Route::get('/guru/show/edit-profile', 'Guru\HomeController@showEditProfile')->name('guru.show_edit_profile');
-        Route::post('/guru/edit-profile', 'Guru\HomeController@editProfile')->name('guru.edit_profile');
+        Route::put('/guru/edit-profile', 'Guru\HomeController@editProfile')->name('guru.edit_profile');
     });
 
 
@@ -85,8 +84,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/siswa/logout', 'Auth\LoginController@logout')->name('siswa.logout');
 
         Route::get('/siswa/show/edit-profile', 'Siswa\HomeController@showEditProfile')->name('siswa.show_edit_profile');
-        Route::post('/siswa/edit-profile', 'Siswa\HomeController@editProfile')->name('siswa.edit_profile');
-        Route::put('/siswa/edit-username', 'Siswa\HomeController@editUsername')->name('siswa.edit_username');
+        Route::put('/siswa/edit-profile', 'Siswa\HomeController@editProfile')->name('siswa.edit_profile');
     });
 });
 

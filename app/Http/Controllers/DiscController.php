@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Explanation;
 use App\Graph1Dictionary;
 use App\Graph2Dictionary;
 use App\Graph3Dictionary;
 use App\TestHistory;
+use App\TestResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -137,7 +139,6 @@ class DiscController extends Controller
                 if ($keyEachStep == "nilai") {
                     foreach ($nilaiStep as $keyNilaiStep => $valueNilaiStep) {
                         $step[$keyStep]["nilai"][$keyNilaiStep] = $stepTotalScore->where("nomor", $keyStep)->first()->stepDetailScore()->where("point_nama", $keyNilaiStep)->first()->nilai;
-//                        echo $step[$keyStep]["nilai"][$keyNilaiStep];
                     }
                 }
                 if ($keyEachStep == "nilaiConverted") {
@@ -197,8 +198,34 @@ class DiscController extends Controller
             }
         }
 
+        $testResult = TestResult::where('test_history_id', $testHistoryId)->first();
+        if (!$testResult) {
+            $testResult = new TestResult();
+            $testResult->current_style = $step[1]["hasil"][0] . $step[1]["hasil"][1];
+            $testResult->pressure_style = $step[2]["hasil"][0] . $step[2]["hasil"][1];
+            $testResult->self_style = $step[3]["hasil"][0] . $step[3]["hasil"][1];
+            $testResult->testHistory()->associate($testHistory);
+            $testResult->save();
+        }
+
+        $getCurrentStyle = Explanation::where('dominan', $step[1]["hasil"][0] . $step[1]["hasil"][1])->first();
+        if (!$getCurrentStyle) {
+            $getCurrentStyle = Explanation::where('dominan', $step[1]["hasil"][0])->first();
+        }
+        $getPressureStyle = Explanation::where('dominan', $step[2]["hasil"][0] . $step[2]["hasil"][1])->first();
+        if (!$getPressureStyle) {
+            $getPressureStyle = Explanation::where('dominan', $step[2]["hasil"][0])->first();
+        }
+        $getSelfStyle = Explanation::where('dominan', $step[3]["hasil"][0] . $step[3]["hasil"][1])->first();
+        if (!$getSelfStyle) {
+            $getSelfStyle = Explanation::where('dominan', $step[3]["hasil"][0])->first();
+        }
+
         return view('pages.disc_result')->with([
-            'step' => $step
+            'step' => $step,
+            'currentStyle' => $getCurrentStyle,
+            'pressureStyle' => $getPressureStyle,
+            'selfStyle' => $getSelfStyle
         ]);
     }
 

@@ -91,8 +91,6 @@
                 buttonsStyling: false,
                 allowOutsideClick: false
             }).then(function (result) {
-                console.log('dapatnya');
-
                 var data = {};
                 data.idTest = idTest;
                 data.namaTest = namaTest;
@@ -103,15 +101,17 @@
                     type: "post",
                     data: data,
                     success: function (response) {
-                        console.log(response);
-                        if (response.enrollmentKeyStatus) {
+                        if (response.key_verified) {
                             window.localStorage.setItem("idTest", idTest);
-                            console.log(window.localStorage.getItem("idTest"));
-                            window.location = '{{route('test.show_disc_test')}}';
+                            showNotif("fa fa-check", response.message, 2, 1200, 'top', 'right');
+                            setTimeout(function () {
+                                window.location = '{{route('test.show_disc_test')}}';
+                            }, 1240);
+                        } else {
+                            showNotif("fa fa-exclamation", response.message, 4, 1800, 'top', 'right');
                         }
                     },
                     error: function (result) {
-                        console.log(result)
                     }
                 });
             }).catch(swal.noop)

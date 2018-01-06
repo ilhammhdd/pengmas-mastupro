@@ -25,7 +25,7 @@
 
 @section('navbar')
     @if(session()->get('the_role')=="admin")
-      @include('layouts.admin.navbar')
+        @include('layouts.admin.navbar')
     @elseif(session()->get('the_role') == "guru")
         @include('layouts.guru.navbar')
     @elseif(session()->get('the_role') == "siswa")
@@ -35,108 +35,211 @@
 
 @section('content')
     <div class="row" style="margin-bottom:100px;">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div id="chartPerformance1" class="ct-chart "></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="row">
                 <h4>Current Style : <b>{{$step[1]["hasil"][0]}}{{$step[1]["hasil"][1]}}</b></h4>
             </div>
-            <div class="row">
-                <h4>Penjelasan : </h4>
-                <p id="penjelasanGraph1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel blandit lectus.
-                    Quisque commodo sit
-                    amet neque hendrerit finibus. Integer iaculis tempus diam, vel pharetra ex pretium nec. Suspendisse
-                    condimentum nisl nisi, a faucibus felis tristique a. Donec nisl orci, rhoncus ut commodo vitae,
-                    posuere vitae lectus. Nulla ullamcorper lobortis erat, vel cursus orci. Vestibulum auctor eu leo in
-                    maximus. Proin tristique et lacus sed vulputate. Vivamus sed consectetur sapien. In malesuada
-                    pharetra eros, eget aliquam lectus rutrum vel. Phasellus massa eros, pulvinar id ipsum non, sagittis
-                    aliquet tellus. Sed ac vestibulum magna, vitae dictum tellus. Aliquam quis neque eu tortor
-                    scelerisque ornare id at orci. Integer id magna mauris.</p>
+            <div class="col-md-5">
+                <div class="row">
+                    <h5>Tujuan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->tujuan}}
+                        @endif
+                    </p>
+                    <h5>Menilai Orang Dari : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->menilai_orang_dari}}
+                        @endif
+                    </p>
+                    <h5>Mempengaruhi Orang Dari : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->mempengaruhi_orang_dari}}
+                        @endif
+                    </p>
+                    <h5>Seringnya : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->sering}}
+                        @endif
+                    </p>
+                    <h5>Dibawah Tekanan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->dibawah_tekanan}}
+                        @endif
+                    </p>
+                    <h5>Ketakutan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->ketakutan}}
+                        @endif
+                    </p>
+                    <h5>Mengingkatkan Efektifitas Melalui : </h5>
+                    <p id="tujuanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->meningkatkan_efektifitas_melalui}}
+                        @endif
+                    </p>
+                </div>
             </div>
-            {{-- <div class="row">
-                <h4>Pekerjaan : </h4>
-                <p>
-                    Curabitur mollis ipsum tellus, in aliquam urna dictum porta. Nullam purus orci, efficitur eu
-                    venenatis sed, accumsan eu libero. Mauris eget felis porttitor, efficitur ex vitae, molestie urna.
-                </p>
+            <div class="col-md-7">
+                <div class="row">
+                    <h4>Penjelasan : </h4>
+                    <p id="penjelasanGraph1">
+                        @if($currentStyle)
+                            {{$currentStyle->penjelasan}}
+                        @endif
+                    </p>
+                </div>
             </div>
-            <div class="row">
-                <h4>Tokoh : </h4>
-                <p>Vestibulum justo tellus, lobortis non elit ac, suscipit dignissim risus.</p>
-            </div> --}}
         </div>
     </div>
     <div class="row" style="margin-bottom:100px;">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div id="chartPerformance2" class="ct-chart "></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="row">
                 <h4>Pressure Style : <b>{{$step[2]["hasil"][0]}}{{$step[2]["hasil"][1]}}</b></h4>
             </div>
-            <div class="row">
-                <h4>Penjelasan : </h4>
-                <p id="penjelasanGraph1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel blandit lectus.
-                    Quisque commodo sit
-                    amet neque hendrerit finibus. Integer iaculis tempus diam, vel pharetra ex pretium nec. Suspendisse
-                    condimentum nisl nisi, a faucibus felis tristique a. Donec nisl orci, rhoncus ut commodo vitae,
-                    posuere vitae lectus. Nulla ullamcorper lobortis erat, vel cursus orci. Vestibulum auctor eu leo in
-                    maximus. Proin tristique et lacus sed vulputate. Vivamus sed consectetur sapien. In malesuada
-                    pharetra eros, eget aliquam lectus rutrum vel. Phasellus massa eros, pulvinar id ipsum non, sagittis
-                    aliquet tellus. Sed ac vestibulum magna, vitae dictum tellus. Aliquam quis neque eu tortor
-                    scelerisque ornare id at orci. Integer id magna mauris.</p>
+            <div class="col-md-5">
+                <div class="row">
+                    <h5>Tujuan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->tujuan}}
+                        @endif
+                    </p>
+                    <h5>Menilai Orang Dari : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->menilai_orang_dari}}
+                        @endif
+                    </p>
+                    <h5>Mempengaruhi Orang Dari : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->mempengaruhi_orang_dari}}
+                        @endif
+                    </p>
+                    <h5>Seringnya : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->sering}}
+                        @endif
+                    </p>
+                    <h5>Dibawah Tekanan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->dibawah_tekanan}}
+                        @endif
+                    </p>
+                    <h5>Ketakutan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->ketakutan}}
+                        @endif
+                    </p>
+                    <h5>Mengingkatkan Efektifitas Melalui : </h5>
+                    <p id="tujuanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->meningkatkan_efektifitas_melalui}}
+                        @endif
+                    </p>
+                </div>
             </div>
-            {{-- <div class="row">
-                <h4>Pekerjaan : </h4>
-                <p>
-                    Curabitur mollis ipsum tellus, in aliquam urna dictum porta. Nullam purus orci, efficitur eu
-                    venenatis sed, accumsan eu libero. Mauris eget felis porttitor, efficitur ex vitae, molestie urna.
-                </p>
+            <div class="col-md-7">
+                <div class="row">
+                    <h4>Penjelasan : </h4>
+                    <p id="penjelasanGraph1">
+                        @if($pressureStyle)
+                            {{$pressureStyle->penjelasan}}
+                        @endif
+                    </p>
+                </div>
             </div>
-            <div class="row">
-                <h4>Tokoh : </h4>
-                <p>Vestibulum justo tellus, lobortis non elit ac, suscipit dignissim risus.</p>
-            </div> --}}
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div id="chartPerformance3" class="ct-chart "></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="row">
-                <h4>Self Style : <b>{{$step[3]["hasil"][0]}}{{$step[3]["hasil"][1]}}</b></h4>
+                <h4>Current Style : <b>{{$step[3]["hasil"][0]}}{{$step[3]["hasil"][1]}}</b></h4>
             </div>
-            <div class="row">
-                <h4>Penjelasan : </h4>
-                <p id="penjelasanGraph1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel blandit lectus.
-                    Quisque commodo sit
-                    amet neque hendrerit finibus. Integer iaculis tempus diam, vel pharetra ex pretium nec. Suspendisse
-                    condimentum nisl nisi, a faucibus felis tristique a. Donec nisl orci, rhoncus ut commodo vitae,
-                    posuere vitae lectus. Nulla ullamcorper lobortis erat, vel cursus orci. Vestibulum auctor eu leo in
-                    maximus. Proin tristique et lacus sed vulputate. Vivamus sed consectetur sapien. In malesuada
-                    pharetra eros, eget aliquam lectus rutrum vel. Phasellus massa eros, pulvinar id ipsum non, sagittis
-                    aliquet tellus. Sed ac vestibulum magna, vitae dictum tellus. Aliquam quis neque eu tortor
-                    scelerisque ornare id at orci. Integer id magna mauris.</p>
+            <div class="col-md-5">
+                <div class="row">
+                    <h5>Tujuan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->tujuan}}
+                        @endif
+                    </p>
+                    <h5>Menilai Orang Dari : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->menilai_orang_dari}}
+                        @endif
+                    </p>
+                    <h5>Mempengaruhi Orang Dari : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->mempengaruhi_orang_dari}}
+                        @endif
+                    </p>
+                    <h5>Seringnya : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->sering}}
+                        @endif
+                    </p>
+                    <h5>Dibawah Tekanan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->dibawah_tekanan}}
+                        @endif
+                    </p>
+                    <h5>Ketakutan : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->ketakutan}}
+                        @endif
+                    </p>
+                    <h5>Mengingkatkan Efektifitas Melalui : </h5>
+                    <p id="tujuanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->meningkatkan_efektifitas_melalui}}
+                        @endif
+                    </p>
+                </div>
             </div>
-            {{-- <div class="row">
-                <h4>Pekerjaan : </h4>
-                <p>
-                    Curabitur mollis ipsum tellus, in aliquam urna dictum porta. Nullam purus orci, efficitur eu
-                    venenatis sed, accumsan eu libero. Mauris eget felis porttitor, efficitur ex vitae, molestie urna.
-                </p>
+            <div class="col-md-7">
+                <div class="row">
+                    <h4>Penjelasan : </h4>
+                    <p id="penjelasanGraph1">
+                        @if($selfStyle)
+                            {{$selfStyle->penjelasan}}
+                        @endif
+                    </p>
+                </div>
             </div>
-            <div class="row">
-                <h4>Tokoh : </h4>
-                <p>Vestibulum justo tellus, lobortis non elit ac, suscipit dignissim risus.</p>
-            </div> --}}
         </div>
     </div>
 @endsection
 
 @section('other-js')
     <script type="text/javascript">
+        $(document).ready(function () {
+            $(document.body).addClass('sidebar-mini');
+        });
+
         var dataPerformance1 = {
             labels: ['D', 'I', 'S', 'C'],
             series: [
