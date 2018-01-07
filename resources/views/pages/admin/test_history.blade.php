@@ -21,7 +21,7 @@
                     <h4 class="title">Riwayat Test</h4>
                 </div>
                 <div  class="fresh-datatables">
-                    <table id="bootstrap-table-history" class="table">
+                    <table id="bootstrap-table-history" class="table table-striped table-hover">
                         <thead>
                         <tr>
                             <th class="text-center">No Test</th>
@@ -51,15 +51,21 @@
                                   <td class="text-left">Guru</td>
                                   <td class="text-left">- - -</td>
                                 @endif
-                                <td class="text-center">SD</td>
-                                <td class="text-center">CD</td>
-                                <td class="text-center">C</td>
+                                <td class="text-center">{{$th->testResult()->first()->current_style}}</td>
+                                <td class="text-center">{{$th->testResult()->first()->pressure_style}}</td>
+                                <td class="text-center">{{$th->testResult()->first()->self_style}}</td>
                                 <td class="td-actions text-center">
                                     <a href="{{route('disc.show_result', $th->id)}}"
                                        rel="tooltip"
                                        title="Lihat Hasil"
                                        class="btn btn-info btn-simple btn-lg" style="opacity: 1;">
                                         <i class="fa fa-book"></i>
+                                    </a>
+                                    <a onclick="deleteTest({{$th->id}})"
+                                       rel="tooltip"
+                                       title="Hapus"
+                                       class="btn btn-simple btn-danger btn-icon table-action remove">
+                                        <i class="fa fa-remove"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -81,6 +87,46 @@
 
 @section('other-js')
       <script type="text/javascript">
+
+      function deleteTest(id){
+          var testHistory = {};
+          testHistory.id = id
+          var json_testHistory = JSON.stringify(testHistory);
+          var parsed_testHistory = JSON.parse(json_testHistory);
+
+          swal({
+            title: 'Apakah anda ingin menghapus ?',
+            text: "Data akan terhapus selamanya",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+              $.ajax({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  },
+                  type: 'post',
+                  url: '{{route('admin.delete_test_history')}}',
+                  data: parsed_testHistory,
+                  success: function (data) {
+                      console.log('Data test berhasil di hapus');
+                      if (data.status){
+                        showNotification('success', data.message);
+                        location.reload();
+                      } else {
+                        showNotification('danger', data.message);
+                      }
+                  },
+                  error: function (data) {
+                      console.log(data);
+                      console.log('gagal')
+                      showNotification('danger', data.message);
+                  }
+              });
+          })
+      }
 
       var $tableKelas = $('#bootstrap-table-history');
 

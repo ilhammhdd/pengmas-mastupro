@@ -34,17 +34,16 @@
                             <thead>
                             <tr>
                                 <th>Pertanyaan Group {{$disc->nomor}}</th>
-                                <th>Most</th>
-                                <th>Least</th>
+                                <th class="text-center">Paling (<i>Most</i>)</th>
+                                <th class="text-center">Tidak Paling (<i>Least</i>)</th>
                             </tr>
                             </thead>
                             @foreach($disc->discSoal as $index => $soal)
-
                                 <tbody>
                                 <tr>
                                     <td>{{$soal->soal}}</td>
                                     <td>
-                                        <div class="radio">
+                                        <div class="radio" style="width:100%; text-align:center;">
                                             <input class="radio-most" type="radio" name="radioMost{{$disc->nomor}}"
                                                    id="radioMostId{{$disc->nomor.$index}}"
                                                    value="{{$soal->kunci_plus}}"
@@ -53,7 +52,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="radio">
+                                        <div class="radio" style="width:100%; text-align:center;">
                                             <input class="radio-least" type="radio" name="radioLeast{{$disc->nomor}}"
                                                    id="radioLeastId{{$disc->nomor.$index}}"
                                                    value="{{$soal->kunci_minus}}"

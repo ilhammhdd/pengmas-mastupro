@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="{{asset('img/favicon.ico')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/Mastupro.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
     <title>@yield('title')</title>
@@ -50,6 +50,7 @@
                 <p class="copyright pull-right">
                     &copy;
                     <script>document.write(new Date().getFullYear())</script>
+                    MASTUPRO
                     {{-- <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a <b></b>etter web --}}
                 </p>
             </div>

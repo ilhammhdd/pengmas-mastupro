@@ -13,7 +13,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Admin Sistem Profiling Siswa</a>
+              <a class="navbar-brand" href="#">Admin Mastupro</a>
           </div>
           <div id="print-data-button">
 

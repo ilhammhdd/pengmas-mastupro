@@ -21,7 +21,7 @@ class CreateStepTotalScoresTable extends Migration
             $table->timestamps();
         });
         Schema::table('step_total_scores', function (Blueprint $table) {
-            $table->foreign('test_history_id')->references('id')->on('test_histories');
+            $table->foreign('test_history_id')->references('id')->on('test_histories')->onDelete('cascade');
         });
     }
 

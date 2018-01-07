@@ -23,7 +23,7 @@ class CreateTestResultsTable extends Migration
         });
 
         Schema::table('test_results', function (Blueprint $table) {
-            $table->foreign('test_history_id')->references('id')->on('test_histories');
+            $table->foreign('test_history_id')->references('id')->on('test_histories')->onDelete('cascade');
         });
     }
 

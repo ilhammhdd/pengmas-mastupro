@@ -23,8 +23,8 @@ class ExplanationsTableSeeder extends Seeder
         $explanation->meningkatkan_efektifitas_melalui = 'Kehangatan, komunikasi bijaksana';
         $explanation->penjelasan = "Orang dengan style DC memprioritaskan tantangan, jadi mereka ingin mencoba semua
 opsi dan memastikan metode yang digunakan adalah yang sebaik mungkin. Dan hasilnya,
-mereka mungkin akan sering bertanya dan skeptis terhadap ide orang lain. Kamu 
-tidak seperti pertanyaan seperti mereka, jadi Anda mungkin mengalami masalah 
+mereka mungkin akan sering bertanya dan skeptis terhadap ide orang lain. Kamu
+tidak seperti pertanyaan seperti mereka, jadi Anda mungkin mengalami masalah
 mengenai pendekatan mereka yang menantang
 Selain itu, mereka juga memprioritaskan Hasil, jadi sering kali sangat langsung dan
 mudah. Ketika mereka fokus pada garis bawah, mereka mungkin mengabaikan

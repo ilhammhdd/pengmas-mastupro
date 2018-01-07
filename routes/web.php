@@ -40,6 +40,8 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::get('/admin/data-test/data-test-history', 'Admin\TestHistoryController@index')->name('admin.show_data_test_history');
         Route::get('/admin/data-test/data-test-print', 'Admin\TestHistoryController@printDataTest')->name('admin.print_data_test_history');
+        Route::post('/admin/data-test/delete-test-history', 'Admin\TestHistoryController@destroy')->name('admin.delete_test_history');
+
 
         Route::post('/admin/data-test/data-kelas-delete', 'Admin\KelasController@destroy')->name('admin.delete_data_kelas');
         Route::post('/admin/data-test/data-kelas-add', 'Admin\KelasController@store')->name('admin.add_data_kelas');

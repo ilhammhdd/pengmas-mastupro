@@ -81,8 +81,25 @@ class TestHistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+      $status = false;
+      $message = "";
+      $testHistory = TestHistory::find($request->id);
+      $testHistory->stepDetailScore()->delete();
+      $testHistory->stepTotalScore()->delete();
+      $testHistory->testResult()->delete();
+      if ($testHistory->delete()){
+        $status = true;
+        $message = "Test History berhasil dihapus";
+      } else {
+        $status = false;
+        $message = "Gagal Menghapus Test History";
+      }
+
+      return response()->json([
+        'status' => $status,
+        'message' => $message,
+      ]);
     }
 }

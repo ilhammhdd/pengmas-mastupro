@@ -22,9 +22,9 @@ class CreateStepDetailScoresTable extends Migration
             $table->timestamps();
         });
         Schema::table('step_detail_scores', function (Blueprint $table) {
-            $table->foreign('step_total_score_id')->references('id')->on('step_total_scores');
-            $table->foreign('point_nama')->references('nama')->on('points');
-            $table->foreign('test_history_id')->references('id')->on('test_histories');
+            $table->foreign('step_total_score_id')->references('id')->on('step_total_scores')->onDelete('cascade');
+            $table->foreign('point_nama')->references('nama')->on('points')->onDelete('cascade');
+            $table->foreign('test_history_id')->references('id')->on('test_histories')->onDelete('cascade');
         });
     }
 

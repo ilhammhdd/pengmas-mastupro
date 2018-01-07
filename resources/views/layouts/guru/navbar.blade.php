@@ -13,7 +13,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Sistem Profiling Guru</a>
+              <a class="navbar-brand" href="#">Malausma Student Profiling System</a>
           </div>
         <div id="finish-test-button">
 

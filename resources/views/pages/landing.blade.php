@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Selamat Datang</title>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" href="{{asset('img/favicon.ico')}}">
+    <link rel="icon" type="image/png" href="{{asset('img/Mastupro.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -28,7 +28,7 @@
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="/" data-placement="bottom">
-          Sistem Profiling Siswa
+          MASTUPRO
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar bar1"></span>
@@ -83,9 +83,9 @@
       </div>
       <div class="container">
         <div class="content-center brand" style="padding-top:200px;">
-          {{-- <img class="emeract-logo" src="{{ asset('landing/img/logo.png') }}" alt=""> --}}
-          <h1 class="h1"><b>Sistem Profiling Siswa</b></h1>
-          <h2 class="h2"><b>SMKN1 Malausma Majalengka</b></h2>
+          <img style="margin-bottom:10px;" src="{{ asset('img/Mastupro.png') }}" alt="">
+          <h2 class="h2"><b>Malausma Student Profiling System</b></h2>
+          <h3 class="h3"><b>SMKN1 Malausma Majalengka</b></h3>
           <h4 class="h4">Know Yourself | Plan Your Future | Get Your Dream</h4>
           {{-- <h4 class="category category-absolut"><b>Know Yourself | Plan Your Future | Get Your Dream</b></h4> --}}
         </div>
@@ -157,6 +157,7 @@
           <script>
               document.write(new Date().getFullYear())
           </script>
+          MASTUPRO
         </div>
       </div>
     </footer>
