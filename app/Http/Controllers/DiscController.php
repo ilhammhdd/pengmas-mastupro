@@ -173,7 +173,12 @@ class DiscController extends Controller
                 }
 
                 $tempHasil = $step[$keyStep]["nilaiConverted"];
-                arsort($tempHasil);
+
+                uksort($tempHasil, function($a, $b) use ($tempHasil){
+                    if ($tempHasil[$a] == $tempHasil[$b]) return 1;
+                    return ($tempHasil[$a] > $tempHasil[$b]) ? 0 : 1;
+                });
+
                 foreach ($tempHasil as $key => $value) {
                     if ($count == 2) {
                         $count = 0;
@@ -198,34 +203,13 @@ class DiscController extends Controller
             }
         }
 
-        $testResult = TestResult::where('test_history_id', $testHistoryId)->first();
-        if (!$testResult) {
-            $testResult = new TestResult();
-            $testResult->current_style = $step[1]["hasil"][0] . $step[1]["hasil"][1];
-            $testResult->pressure_style = $step[2]["hasil"][0] . $step[2]["hasil"][1];
-            $testResult->self_style = $step[3]["hasil"][0] . $step[3]["hasil"][1];
-            $testResult->testHistory()->associate($testHistory);
-            $testResult->save();
-        }
-
-        $getCurrentStyle = Explanation::where('dominan', $step[1]["hasil"][0] . $step[1]["hasil"][1])->first();
-        if (!$getCurrentStyle) {
-            $getCurrentStyle = Explanation::where('dominan', $step[1]["hasil"][0])->first();
-        }
-        $getPressureStyle = Explanation::where('dominan', $step[2]["hasil"][0] . $step[2]["hasil"][1])->first();
-        if (!$getPressureStyle) {
-            $getPressureStyle = Explanation::where('dominan', $step[2]["hasil"][0])->first();
-        }
-        $getSelfStyle = Explanation::where('dominan', $step[3]["hasil"][0] . $step[3]["hasil"][1])->first();
-        if (!$getSelfStyle) {
-            $getSelfStyle = Explanation::where('dominan', $step[3]["hasil"][0])->first();
-        }
+        $this->saveTestResult($testHistoryId, $step, $testHistory);
 
         return view('pages.disc_result')->with([
             'step' => $step,
-            'currentStyle' => $getCurrentStyle,
-            'pressureStyle' => $getPressureStyle,
-            'selfStyle' => $getSelfStyle
+            'currentStyle' => $this->getCurrentStyle($step),
+            'pressureStyle' => $this->getPressureStyle($step),
+            'selfStyle' => $this->getSelfStyle($step)
         ]);
     }
 
@@ -264,5 +248,81 @@ class DiscController extends Controller
         }
 
         return $g->nilai_graph_converted;
+    }
+
+    private function saveTestResult($testHistoryId, $step, $testHistory)
+    {
+        $testResult = TestResult::where('test_history_id', $testHistoryId)->first();
+        if (!$testResult) {
+            $testResult = new TestResult();
+            $testResult->current_style = $step[1]["hasil"][0] . $step[1]["hasil"][1];
+            $testResult->pressure_style = $step[2]["hasil"][0] . $step[2]["hasil"][1];
+            $testResult->self_style = $step[3]["hasil"][0] . $step[3]["hasil"][1];
+            $testResult->testHistory()->associate($testHistory);
+            $testResult->save();
+        }
+    }
+
+    private function getCurrentStyle($step)
+    {
+        $getCurrentStyle = Explanation::where('dominan', $step[1]["hasil"][0] . $step[1]["hasil"][1])->first();
+        if (!$getCurrentStyle) {
+//            $getCurrentStyle = Explanation::where('dominan', $step[1]["hasil"][0])->first();
+            $getCurrentStyle = new Explanation();
+            $getCurrentStyle->id = 997;
+            $getCurrentStyle->dominan = "N";
+            $getCurrentStyle->tujuan = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->menilai_orang_dari = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->mempengaruhi_orang_dari = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->sering = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->dibawah_tekanan = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->ketakutan = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->meningkatkan_efektifitas_melalui = "Tidak dapat diinterpretasikan";
+            $getCurrentStyle->penjelasan = "Tidak dapat diinterpretasikan";
+        }
+
+        return $getCurrentStyle;
+    }
+
+    private function getPressureStyle($step)
+    {
+        $getPressureStyle = Explanation::where('dominan', $step[2]["hasil"][0] . $step[2]["hasil"][1])->first();
+        if (!$getPressureStyle) {
+//            $getPressureStyle = Explanation::where('dominan', $step[2]["hasil"][0])->first();
+            $getPressureStyle = new Explanation();
+            $getPressureStyle->id = 998;
+            $getPressureStyle->dominan = "N";
+            $getPressureStyle->tujuan = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->menilai_orang_dari = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->mempengaruhi_orang_dari = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->sering = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->dibawah_tekanan = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->ketakutan = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->meningkatkan_efektifitas_melalui = "Tidak dapat diinterpretasikan";
+            $getPressureStyle->penjelasan = "Tidak dapat diinterpretasikan";
+        }
+
+        return $getPressureStyle;
+    }
+
+    private function getSelfStyle($step)
+    {
+        $getSelfStyle = Explanation::where('dominan', $step[3]["hasil"][0] . $step[3]["hasil"][1])->first();
+        if (!$getSelfStyle) {
+//            $getSelfStyle = Explanation::where('dominan', $step[3]["hasil"][0])->first();
+            $getSelfStyle = new Explanation();
+            $getSelfStyle->id = 999;
+            $getSelfStyle->dominan = "N";
+            $getSelfStyle->tujuan = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->menilai_orang_dari = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->mempengaruhi_orang_dari = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->sering = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->dibawah_tekanan = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->ketakutan = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->meningkatkan_efektifitas_melalui = "Tidak dapat diinterpretasikan";
+            $getSelfStyle->penjelasan = "Tidak dapat diinterpretasikan";
+        }
+
+        return $getSelfStyle;
     }
 }
