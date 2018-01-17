@@ -138,7 +138,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Ubah Data Guru</h4>
+            <h4 class="modal-title" id="myModalLabel">Ubah Data Siswa</h4>
           </div>
           <div class="modal-body">
             <form id="updateFormValidation" action="{{route('admin.update_data_siswa')}}" method="post" novalidate="">
@@ -197,7 +197,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Reset Password</h4>
+            <h4 class="modal-title" id="myModalLabel">Reset Akun</h4>
           </div>
           <div class="modal-body">
             <form id="rpFormValidation" action="{{route('admin.reset_password_siswa')}}" method="post" novalidate="">

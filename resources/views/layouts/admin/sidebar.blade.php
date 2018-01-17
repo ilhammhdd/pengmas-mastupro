@@ -62,12 +62,12 @@
                                 <span class="sidebar-normal">Data Guru</span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="{{route('admin.get_register_new_user')}}">
                                 <i class=""></i>
                                 <p>Aktivasi User</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </li>
