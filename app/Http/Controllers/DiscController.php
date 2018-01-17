@@ -174,10 +174,8 @@ class DiscController extends Controller
 
                 $tempHasil = $step[$keyStep]["nilaiConverted"];
 
-                uksort($tempHasil, function($a, $b) use ($tempHasil){
-                    if ($tempHasil[$a] == $tempHasil[$b]) return 1;
-                    return ($tempHasil[$a] > $tempHasil[$b]) ? 0 : 1;
-                });
+                asort($tempHasil);
+                arsort($tempHasil);
 
                 foreach ($tempHasil as $key => $value) {
                     if ($count == 2) {
@@ -202,7 +200,6 @@ class DiscController extends Controller
                 }
             }
         }
-
         $this->saveTestResult($testHistoryId, $step, $testHistory);
 
         return view('pages.disc_result')->with([
