@@ -51,9 +51,15 @@
                                   <td class="text-left">Guru</td>
                                   <td class="text-left">- - -</td>
                                 @endif
-                                <td class="text-center">{{$th->testResult()->first()->current_style}}</td>
-                                <td class="text-center">{{$th->testResult()->first()->pressure_style}}</td>
-                                <td class="text-center">{{$th->testResult()->first()->self_style}}</td>
+                                @if ($th->testResult()->first() != null)
+                                  <td class="text-center">{{$th->testResult()->first()->current_style}}</td>
+                                  <td class="text-center">{{$th->testResult()->first()->pressure_style}}</td>
+                                  <td class="text-center">{{$th->testResult()->first()->self_style}}</td>
+                                @else
+                                  <td class="text-center">Null</td>
+                                  <td class="text-center">Null</td>
+                                  <td class="text-center">Null</td>
+                                @endif
                                 <td class="td-actions text-center">
                                     <a href="{{route('disc.show_result', $th->id)}}"
                                        rel="tooltip"

@@ -65,7 +65,7 @@ class TestController extends Controller
 
         return response()->json([
             'success' => true,
-            'route' => route('test.show_history'),
+            'route' => route('disc.show_result', $testHistory->id),
             'message' => 'successfully submit test'
         ]);
     }
